@@ -1,0 +1,27 @@
+<template>
+    <section role="dialog" tabindex="-1" class={modalSize}
+        aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby={modalContentId}>
+        <div class="slds-modal__container">
+
+            <!--check to Include Modal Header or Not-->
+                <header class={headerClass}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        onclick={handleCloseModal} title="Close">
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse"
+                            title="Close"></lightning-icon>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{title}</h2>
+                </header>
+
+            <div class="slds-modal__content slds-p-around_medium" id={modalContentId}>
+                <slot></slot> <!-- passing vaue to body using unnamed Slots from parent cmp-->
+            </div>
+            <footer class={footerClass}>
+                <slot name="footer" onslotchange={handleFooterSlot}></slot>
+                <!-- we can use onslotchange property and fires whenever slot value changes -->
+            </footer>
+
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

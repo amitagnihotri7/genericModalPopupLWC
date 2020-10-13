@@ -1,0 +1,64 @@
+<template>
+    <lightning-button name="showModalOpen" title="Open Modal" label="Open Modal" onclick={handleButtonClick}
+        variant="brand" class="slds-p-around_small">
+    </lightning-button>
+
+    <lightning-button name="headlessModal" title="headlessModal" label="Open headlessModal" onclick={handleButtonClick}
+        variant="brand" class="slds-p-around_small">
+    </lightning-button>
+
+    <lightning-button name="footerlessModal" title="footerlessModal" label="Open footerlessModal"
+        onclick={handleButtonClick} variant="brand" class="slds-p-around_small">
+    </lightning-button>
+
+    <!-- Modal Example to Pass Body title from parent cmp to generic Modal-->
+    <template if:true={showModalOpen}>
+        <c-generic-lightning-modal title={modalContent.title} modal-id="showModalOpen" onclosemodal={handleCloseModal}
+            modal-header size="large">
+            <!--Passing Footer using named slot to Generic Modal cmp 'generic-lightning-modal'-->
+            <div slot="footer">
+                <div class="slds-modal__footer_directional">
+                    <!--this class will move below First button move towards extreme left -->
+                    <button class="slds-button slds-button_neutral" data-modal-id="showModalOpen"
+                        onclick={handleCloseModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" data-modal-id="showModalOpen"
+                        onclick={handleSaveModal}>Save</button>
+                </div>
+            </div>
+
+            <!-- Pass body to modal using unnamed slots-->
+            dhaljdlsjd;sajd;lsajd;sajd;sa;dsa;djsaldjsadjsa;jd;sajd;sajds<p>dksahdkhskdhsakd</p>
+            <b>Body akhdkahdlsajdlsajd;ljsdlsjd</b>
+        </c-generic-lightning-modal>
+    </template>
+
+    <!-- Headless Modal -->
+    <template if:true={headlessModal}>
+        <c-generic-lightning-modal modal-id="headlessModal" onclosemodal={handleCloseModal}>
+            <!-- Pass body to modal using unnamed slots-->
+            <b>Headless Modal Example as Illittrated </b>
+
+            <!--Footer Here-->
+            <div slot="footer">
+                <div class="slds-modal__footer_directional">
+                    <!--this class will move below First button move towards extreme left -->
+                    <button class="slds-button slds-button_neutral" data-modal-id="showModalOpen"
+                        onclick={handleCloseModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" data-modal-id="showModalOpen"
+                        onclick={handleSaveModal}>Save</button>
+                </div>
+            </div>
+        </c-generic-lightning-modal>
+    </template>
+
+    <!-- FooterLess Modal, Not Passing Footer -->
+    <template if:true={footerlessModal}>
+        <c-generic-lightning-modal title="FooterLess Modal" modal-id="footerlessModal" onclosemodal={handleCloseModal}
+            modal-header>
+            <!--include Header-->
+            <!-- Pass body to modal using unnamed slots-->
+            <b>Headless Modal Example as Illittrated </b>
+        </c-generic-lightning-modal>
+    </template>
+
+</template>
